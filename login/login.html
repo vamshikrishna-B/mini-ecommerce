@@ -1,161 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>login</title>
-  <style>
-    /* Global Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #8a74a1, #daae85);
-    }
-
-    /* Glass Card */
-    .auth-container {
-      width: 380px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 30px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      color: #2c0505;
-      text-align: center;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      font-size: 26px;
-      font-weight: 600;
-    }
-
-    .input-box {
-      width: 100%;
-      margin: 15px 0;
-    }
-
-    .input-box input {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      outline: none;
-      border-radius: 10px;
-      font-size: 15px;
-    }
-
-    .btn {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background: #2575fc;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #11cb93;
-    }
-
-    .toggle-text {
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .toggle-text a {
-      color: #ffd369;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .toggle-text a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login form</title>
+    <link rel="stylesheet" href="login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-  <div class="auth-container" id="authBox">
-    <h2 id="formTitle">Login</h2>
-    <form id="authForm">
-      <div class="input-box">
-        <input type="email" placeholder="Email" required>
-      </div>
-      <div class="input-box">
-        <input type="password" placeholder="Password" required>
-      </div>
-      <button type="submit" class="btn" id="submitBtn">Login</button>
-    </form>
-    <p class="toggle-text">
-      Don’t have an account? <a href="#" id="toggleLink">Sign Up</a>
-    </p>
-  </div>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-blob">
+                <img src="assets/images/blob.svg" alt="Blob" class="blob-image blob-image--1">
+                <img src="assets/images/blob.svg" alt="Blob" class="blob-image blob-image--2">
+                <img src="assets/images/blob.svg" alt="Blob" class="blob-image blob-image--3">
+            </div>
 
-  <script>
-    // Toggle Login & Signup
-    const formTitle = document.getElementById("formTitle");
-    const submitBtn = document.getElementById("submitBtn");
-    const toggleLink = document.getElementById("toggleLink");
-    const authForm = document.getElementById("authForm");
+            <div class="form-header">
+                <p>Please enter your details</p>
+                <h1></h1>
+            </div>
 
-    let isLogin = true;
+            <form class="form-box">
+                <div class="input-group">
+                    <input type="email" id="email" class="input-field" placeholder="" required>
+                    <label for="email" class="floating-label">Email address</label>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" class="input-field" placeholder="" required>
+                    <label for="password" class="floating-label">Password</label>
+                    <div class="eye-icon" onclick="togglePassword()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>                    
+                    </div>
+                </div>
 
-    toggleLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (isLogin) {
-        formTitle.textContent = "Sign Up";
-        submitBtn.textContent = "Sign Up";
-        toggleLink.textContent = "Login";
-        authForm.innerHTML = `
-          <div class="input-box">
-            <input type="text" placeholder="Full Name" required>
-          </div>
-          <div class="input-box">
-            <input type="email" placeholder="Email" required>
-          </div>
-          <div class="input-box">
-            <input type="password" placeholder="Password" required>
-          </div>
-          <div class="input-box">
-            <input type="password" placeholder="Confirm Password" required>
-          </div>
-          <button type="submit" class="btn">Sign Up</button>
-        `;
-      } else {
-        formTitle.textContent = "Login";
-        submitBtn.textContent = "Login";
-        toggleLink.textContent = "Sign Up";
-        authForm.innerHTML = `
-          <div class="input-box">
-            <input type="email" placeholder="Email" required>
-          </div>
-          <div class="input-box">
-            <input type="password" placeholder="Password" required>
-          </div>
-          <button type="submit" class="btn">Login</button>
-        `;
-      }
-      isLogin = !isLogin;
-    });
-  </script>
+                <div class="input-group checkbox-group">
+                    <div class="form-col remember-me">
+                        <input type="checkbox" id="remember-me-checkbox" class="checkbox-field">
+                        <label for="remember-me-checkbox">Remember me</label>
+                    </div>
+                    <div class="form-col">
+                        <a href="#" class="form-link">Forgot password?</a>
+                    </div>
+                </div>
+
+                <button type="submit" class="form-btn form-btn--submit">Sign In</button>
+            </form>
+            <div class="form-divider">
+                <p>Or</p>
+            </div>
+            <div class="form-bottom">
+                <div class="form-socials">
+
+                    <button type="button" class="form-btn form-btn--social">
+                        <img src="/assets/icons8-google-50.svg" class="btn-icon" alt="">
+                    </button>
+
+                    <button type="button" class="form-btn form-btn--social">
+                        <img src="/assets/icons8-facebook-logo-50.svg" class="btn-icon" alt="">
+                    </button>
+
+                    <button type="button" class="form-btn form-btn--social">
+                        <img src="/assets/icons8-linkedin-50.svg" class="btn-icon" alt="">
+                    </button>
+
+                </div>
+                <p>Don't have an account? <a href="#" class="form-link">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="login.js">
+      // The javascript codes will go here
+   
+    </script>
+
 </body>
 </html>
