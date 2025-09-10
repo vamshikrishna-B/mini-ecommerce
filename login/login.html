@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #8a74a1, #daae85);
+    }
+
+    /* Glass Card */
+    .auth-container {
+      width: 380px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      color: #2c0505;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    .input-box {
+      width: 100%;
+      margin: 15px 0;
+    }
+
+    .input-box input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: #2575fc;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #11cb93;
+    }
+
+    .toggle-text {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .toggle-text a {
+      color: #ffd369;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .toggle-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container" id="authBox">
+    <h2 id="formTitle">Login</h2>
+    <form id="authForm">
+      <div class="input-box">
+        <input type="email" placeholder="Email" required>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" required>
+      </div>
+      <button type="submit" class="btn" id="submitBtn">Login</button>
+    </form>
+    <p class="toggle-text">
+      Don’t have an account? <a href="#" id="toggleLink">Sign Up</a>
+    </p>
+  </div>
+
+  <script>
+    // Toggle Login & Signup
+    const formTitle = document.getElementById("formTitle");
+    const submitBtn = document.getElementById("submitBtn");
+    const toggleLink = document.getElementById("toggleLink");
+    const authForm = document.getElementById("authForm");
+
+    let isLogin = true;
+
+    toggleLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (isLogin) {
+        formTitle.textContent = "Sign Up";
+        submitBtn.textContent = "Sign Up";
+        toggleLink.textContent = "Login";
+        authForm.innerHTML = `
+          <div class="input-box">
+            <input type="text" placeholder="Full Name" required>
+          </div>
+          <div class="input-box">
+            <input type="email" placeholder="Email" required>
+          </div>
+          <div class="input-box">
+            <input type="password" placeholder="Password" required>
+          </div>
+          <div class="input-box">
+            <input type="password" placeholder="Confirm Password" required>
+          </div>
+          <button type="submit" class="btn">Sign Up</button>
+        `;
+      } else {
+        formTitle.textContent = "Login";
+        submitBtn.textContent = "Login";
+        toggleLink.textContent = "Sign Up";
+        authForm.innerHTML = `
+          <div class="input-box">
+            <input type="email" placeholder="Email" required>
+          </div>
+          <div class="input-box">
+            <input type="password" placeholder="Password" required>
+          </div>
+          <button type="submit" class="btn">Login</button>
+        `;
+      }
+      isLogin = !isLogin;
+    });
+  </script>
+</body>
+</html>
