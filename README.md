@@ -1,2 +1,3 @@
-# interview-preparation
-interview preparation for students
+# mini ecommerce
+ecommerce website all products available like a mini store
+
